@@ -1,4 +1,4 @@
-package com.task.service;
+package com.task.serviceImpl;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.task.enums.TaskStatus;
 import com.task.model.Task;
 import com.task.reposistory.TaskReposistroy;
+import com.task.service.TaskService;
 
 @Service
 public class TaskServiceImpl implements TaskService{
@@ -89,7 +90,7 @@ public class TaskServiceImpl implements TaskService{
 	}
 
 	@Override
-	public Task CompleteTask(Long taskId)  throws Exception{
+	public Task completeTask(Long taskId)  throws Exception{
 		Task existingTasks = getTaskById(taskId);
 		existingTasks.setStatus(TaskStatus.DONE);
 		return taskReposistroy.save(existingTasks);
